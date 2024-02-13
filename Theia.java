@@ -28,14 +28,14 @@ public class Theia extends LinearOpMode {
         visionProcessor = new CSVisionProcessor(80, 100, 202, 200, 202, 300, 202);
         visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "Webcam 1"), visionProcessor);
 		
-        frm = hardwareMap.get(DcMotor.class, "frm");
-        flm = hardwareMap.get(DcMotor.class, "flm");
-        brm = hardwareMap.get(DcMotor.class, "brm");
-        blm = hardwareMap.get(DcMotor.class, "blm");
-        arm1 = hardwareMap.get(DcMotor.class, "arm1");
-        arm2 = hardwareMap.get(DcMotor.class, "arm2");
-        rightclaw = hardwareMap.crservo.get("right claw");
-        leftclaw = hardwareMap.crservo.get("left claw");
+        frm = hardwareMap.get(DcMotor.class, "FRM");
+        flm = hardwareMap.get(DcMotor.class, "FLM");
+        brm = hardwareMap.get(DcMotor.class, "BRM");
+        blm = hardwareMap.get(DcMotor.class, "BLM");
+        arm1 = hardwareMap.get(DcMotor.class, "LM");
+        arm2 = hardwareMap.get(DcMotor.class, "RM");
+        rightclaw = hardwareMap.crservo.get("FRS");
+        leftclaw = hardwareMap.crservo.get("FLS");
 
         CSVisionProcessor.StartingPosition startingPos = CSVisionProcessor.StartingPosition.NONE;
 
