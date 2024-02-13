@@ -84,7 +84,7 @@ public class Theia extends LinearOpMode {
 			
 			moveLeft(200); //move back
 			break;
-		case default:
+		default:
 			break;
 		}
         if(!opModeIsActive()) return;
@@ -133,7 +133,7 @@ public class Theia extends LinearOpMode {
 			
 			moveLeft(150); //move back
 			break;
-		case default:
+		default:
 			break;
 		}
         if(!opModeIsActive()) return;
