@@ -210,17 +210,17 @@ public class Theia extends LinearOpMode {
 	public void grabBoth(long time) {
 		arm1.setPower(-0.5);
 		arm2.setPower(-0.5);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(0.5);
 		leftclaw.setPower(0.5);
-		sleep(time*0.25);
+		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
 		rightclaw.setPower(0);
 		leftclaw.setPower(0);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(0);
@@ -231,15 +231,15 @@ public class Theia extends LinearOpMode {
 	public void grabLeft(long time) {
 		arm1.setPower(-0.5);
 		arm2.setPower(-0.5);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		leftclaw.setPower(0.5);
-		sleep(time*0.25);
+		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
 		leftclaw.setPower(0);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		leftclaw.setPower(0);
@@ -249,17 +249,17 @@ public class Theia extends LinearOpMode {
 	public void releaseBoth(long time) {
 		arm1.setPower(-0.5);
 		arm2.setPower(-0.5);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(-0.5);
 		leftclaw.setPower(-0.5);
-		sleep(time*0.25);
+		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
 		rightclaw.setPower(0);
 		leftclaw.setPower(0);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(0);
@@ -270,15 +270,15 @@ public class Theia extends LinearOpMode {
 	public void releaseRight(long time) {
 		arm1.setPower(-0.5);
 		arm2.setPower(-0.5);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(-0.5);
-		sleep(time*0.25);
+		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
 		rightclaw.setPower(0);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		rightclaw.setPower(0);
@@ -288,15 +288,15 @@ public class Theia extends LinearOpMode {
 	public void releaseLeft(long time) {
 		arm1.setPower(-0.5);
 		arm2.setPower(-0.5);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		leftclaw.setPower(-0.5);
-		sleep(time*0.25);
+		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
 		leftclaw.setPower(0);
-		sleep(time*0.375);
+		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
 		leftclaw.setPower(0);
