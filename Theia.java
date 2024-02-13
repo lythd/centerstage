@@ -22,7 +22,7 @@ public class Theia extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        visionProcessor = new CSVisionProcessor();
+        visionProcessor = new CSVisionProcessor(80, 100, 202, 200, 202, 300, 202);
         visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "Webcam 1"), visionProcessor);
 		
         frm = hardwareMap.get(DcMotor.class, "frm");
