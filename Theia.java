@@ -1,5 +1,8 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.teamcode.CSVisionProcessor;
+import org.firstinspires.ftc.teamcode.CSVisionProcessor.*;
+import static org.firstinspires.ftc.teamcode.CSVisionProcessor.*;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -57,7 +60,7 @@ public class Theia extends LinearOpMode {
         if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
-		case CSVisionProcessor.StartingPosition.LEFT:
+		case LEFT:
 			moveUp(200); //move to left tape
 			if(!opModeIsActive()) return;
 			
@@ -66,7 +69,7 @@ public class Theia extends LinearOpMode {
 			
 			moveDown(200); //move back
 			break;
-		case CSVisionProcessor.StartingPosition.RIGHT:
+		case RIGHT:
 			moveDown(200); //move to right tape
 			if(!opModeIsActive()) return;
 			
@@ -75,7 +78,7 @@ public class Theia extends LinearOpMode {
 			
 			moveUp(200); //move back
 			break;
-		case CSVisionProcessor.StartingPosition.CENTER:
+		case CENTER:
 			moveRight(200); //move to center tape
 			if(!opModeIsActive()) return;
 			
@@ -106,7 +109,7 @@ public class Theia extends LinearOpMode {
 		if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
-		case CSVisionProcessor.StartingPosition.LEFT:
+		case LEFT:
 			moveLeft(50); //move to left tape position
 			if(!opModeIsActive()) return;
 			
@@ -115,7 +118,7 @@ public class Theia extends LinearOpMode {
 			
 			moveRight(50); //move back
 			break;
-		case CSVisionProcessor.StartingPosition.RIGHT:
+		case RIGHT:
 			moveRight(350); //move to right tape position
 			if(!opModeIsActive()) return;
 			
@@ -124,7 +127,7 @@ public class Theia extends LinearOpMode {
 			
 			moveLeft(350); //move back
 			break;
-		case CSVisionProcessor.StartingPosition.CENTER:
+		case CENTER:
 			moveRight(150); //move to center tape position
 			if(!opModeIsActive()) return;
 			
