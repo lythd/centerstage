@@ -197,10 +197,10 @@ public class Theia extends LinearOpMode {
         brm.setPower((-dx-dy-da)*pwr);
         blm.setPower((-dx+dy-da)*pwr);
 		sleep(time);
-		stop();
+		halt();
     }
 	
-	private void stop() {
+	private void halt() {
         frm.setPower(0);
         flm.setPower(0);
         brm.setPower(0);
