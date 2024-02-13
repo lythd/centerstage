@@ -189,9 +189,9 @@ public class Theia extends LinearOpMode {
 	}
 
 	private void move(double dx, double dy, double da, long time) {
-        dx_=dx;
-        dy_=dy;
-        da_=da;
+        dx=dx;
+        dy=dy;
+        da=da;
         frm.setPower((+dx-dy-da)*pwr);
         flm.setPower((+dx+dy-da)*pwr);
         brm.setPower((-dx-dy-da)*pwr);
