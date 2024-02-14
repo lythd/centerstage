@@ -2,10 +2,13 @@ package org.firstinspires.ftc.teamcode;
 
 import org.firstinspires.ftc.teamcode.CSVisionProcessor;
 import org.firstinspires.ftc.teamcode.CSVisionProcessor.*;
+
 import static org.firstinspires.ftc.teamcode.CSVisionProcessor.*;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.*;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.vision.VisionPortal;
@@ -13,14 +16,14 @@ import org.firstinspires.ftc.vision.VisionPortal;
 @Autonomous
 public class Theia extends LinearOpMode {
 
-	public final boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
+    public final boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
 
     private CSVisionProcessor visionProcessor;
     private VisionPortal visionPortal;
 
     private DcMotor frm, flm, brm, blm, arm1, arm2;
-	private CRServo rightclaw, leftclaw;
-	private double pwr = 0.6;
+    private Servo rightclaw, leftclaw;
+    private double pwr = 0.6;
 
     @Override
     public void runOpMode() {
@@ -34,12 +37,14 @@ public class Theia extends LinearOpMode {
         blm = hardwareMap.get(DcMotor.class, "BLM");
         arm1 = hardwareMap.get(DcMotor.class, "LM");
         arm2 = hardwareMap.get(DcMotor.class, "RM");
-        rightclaw = hardwareMap.crservo.get("FRS");
-        leftclaw = hardwareMap.crservo.get("FLS");
+        rightclaw = hardwareMap.get(Servo.class, "FRS");
+        leftclaw = hardwareMap.get(Servo.class, "FLS");
 
         CSVisionProcessor.StartingPosition startingPos = CSVisionProcessor.StartingPosition.NONE;
 
 		//start by grabbing
+		rightclaw.setPosition(1.0);
+		leftclaw.setPosition(1.0);
 		//grabLeft();
 		//grabRight();
 		
@@ -213,18 +218,14 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(0.5);
-		leftclaw.setPower(0.5);
+		rightclaw.setPosition(1.0);
+		leftclaw.setPosition(1.0);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
-		rightclaw.setPower(0);
-		leftclaw.setPower(0);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(0);
-		leftclaw.setPower(0);
         telemetry.update();
 	}
 
@@ -234,15 +235,13 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPower(0.5);
+		leftclaw.setPosition(1.0);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
-		leftclaw.setPower(0);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPower(0);
         telemetry.update();
 	}
 	
@@ -252,18 +251,14 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(-0.5);
-		leftclaw.setPower(-0.5);
+		rightclaw.setPosition(0.0);
+		leftclaw.setPosition(0.0);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
-		rightclaw.setPower(0);
-		leftclaw.setPower(0);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(0);
-		leftclaw.setPower(0);
         telemetry.update();
 	}
 	
@@ -273,15 +268,13 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(-0.5);
+		rightclaw.setPosition(0.0);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
-		rightclaw.setPower(0);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPower(0);
         telemetry.update();
 	}
 	
@@ -291,15 +284,13 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPower(-0.5);
+		leftclaw.setPosition(0.0);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(0.5);
-		leftclaw.setPower(0);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPower(0);
         telemetry.update();
 	}
 
