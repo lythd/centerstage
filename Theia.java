@@ -31,10 +31,10 @@ public class Theia extends LinearOpMode {
         visionProcessor = new CSVisionProcessor(120, 5, 322, 260, 282, 500, 342);
         visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "Webcam 1"), visionProcessor);
 		
-        frm = hardwareMap.get(DcMotor.class, "FRM");
-        flm = hardwareMap.get(DcMotor.class, "FLM");
-        brm = hardwareMap.get(DcMotor.class, "BRM");
-        blm = hardwareMap.get(DcMotor.class, "BLM");
+        frm = hardwareMap.get(DcMotor.class, "FLM");
+        flm = hardwareMap.get(DcMotor.class, "BLM");
+        brm = hardwareMap.get(DcMotor.class, "FRM");
+        blm = hardwareMap.get(DcMotor.class, "BRM");
         arm1 = hardwareMap.get(DcMotor.class, "LM");
         arm2 = hardwareMap.get(DcMotor.class, "RM");
         rightclaw = hardwareMap.get(Servo.class, "FRS");
@@ -85,36 +85,36 @@ public class Theia extends LinearOpMode {
 
         // run all tasks as long as op mode is active
 		
-		moveRight(200); //move up to the spike tape area
+		moveRight(50); //move up to the spike tape area
         if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
 		case LEFT:
-			moveUp(200); //move to left tape
+			moveUp(50); //move to left tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(1000); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveDown(200); //move back
+			moveDown(50); //move back
 			break;
 		case RIGHT:
-			moveDown(200); //move to right tape
+			moveDown(50); //move to right tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(1000); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveUp(200); //move back
+			moveUp(50); //move back
 			break;
 		case CENTER:
-			moveRight(200); //move to center tape
+			moveRight(50); //move to center tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(1000); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveLeft(200); //move back
+			moveLeft(50); //move back
 			break;
 		default:
 			break;
@@ -125,7 +125,7 @@ public class Theia extends LinearOpMode {
 		if(!BACK) {
 			//move???(???); // possible adjustment location
 			if(!opModeIsActive()) return;
-			moveUp(1000); //move to other set of tapes to be consistent
+			moveUp(250); //move to other set of tapes to be consistent
 			if(!opModeIsActive()) return;
 			//move???(???); // possible adjustment location
 			if(!opModeIsActive()) return;
@@ -134,61 +134,61 @@ public class Theia extends LinearOpMode {
 			if(!opModeIsActive()) return;
 		}
 		
-		moveUp(2000); //move to the backthing
+		moveUp(500); //move to the backthing
 		if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
 		case LEFT:
-			moveLeft(50); //move to left tape position
+			moveLeft(12); //move to left tape position
 			if(!opModeIsActive()) return;
 			
 			releaseRight(1000); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
-			moveRight(50); //move back
+			moveRight(12); //move back
 			break;
 		case RIGHT:
-			moveRight(350); //move to right tape position
+			moveRight(87); //move to right tape position
 			if(!opModeIsActive()) return;
 			
 			releaseRight(1000); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
-			moveLeft(350); //move back
+			moveLeft(87); //move back
 			break;
 		case CENTER:
-			moveRight(150); //move to center tape position
+			moveRight(37); //move to center tape position
 			if(!opModeIsActive()) return;
 			
 			releaseRight(1000); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
-			moveLeft(150); //move back
+			moveLeft(37); //move back
 			break;
 		default:
 			break;
 		}
         if(!opModeIsActive()) return;
 		
-		moveUp(3500); //move to the front stack of pixels
+		moveUp(875); //move to the front stack of pixels
 		if(!opModeIsActive()) return;
 		
-		moveRight(50); //align
+		moveRight(12); //align
 		if(!opModeIsActive()) return;
 		
 		grabBoth(1000); //grab as much of stack as possible
 		if(!opModeIsActive()) return;
 		
-		moveLeft(50); //align
+		moveLeft(12); //align
 		if(!opModeIsActive()) return;
 		
-		moveDown(3500); //move to the backthingy
+		moveDown(875); //move to the backthingy
 		if(!opModeIsActive()) return;
 		
 		releaseBoth(1000); //release as much of stack as possible
 		if(!opModeIsActive()) return;
 		
-		moveUp(100); //already in parking but just like move off a bit yk
+		moveUp(25); //already in parking but just like move off a bit yk
 		if(!opModeIsActive()) return;
 		
     }
