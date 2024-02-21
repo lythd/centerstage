@@ -16,7 +16,7 @@ import org.firstinspires.ftc.vision.VisionPortal;
 @Autonomous
 public class Theia extends LinearOpMode {
 
-    public final boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
+    public boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
 
     private CSVisionProcessor visionProcessor;
     private VisionPortal visionPortal;
@@ -50,6 +50,30 @@ public class Theia extends LinearOpMode {
 		
         //waitForStart();
 
+		boolean finishedSettingLocation = false;
+        while (!finishedSettingLocation) {
+            if (gamepad1.a) {
+                telemetry.addLine("confirmed starting location");
+                finishedSettingLocation = true;
+            } else if (gamepad1.dpad_down) {
+                telemetry.addLine("pos set to red back");
+                RED = true;
+				BACK = false;
+            } else if (gamepad1.dpad_right) {
+                telemetry.addLine("pos set to red front");
+                RED = true;
+				BACK = true;
+            } else if (gamepad1.dpad_up) {
+                telemetry.addLine("pos set to blue back");
+                RED = false;
+				BACK = false;
+            } else if (gamepad1.dpad_left) {
+                telemetry.addLine("pos set to blue front");
+                RED = false;
+				BACK = true;
+            }
+        }
+		
 		// find starting position of the prop/pixel [based on saturation]
         while(!this.isStarted() && !this.isStopRequested()) {
             startingPos = visionProcessor.getStartingPosition();
