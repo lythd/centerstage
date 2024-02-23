@@ -16,31 +16,31 @@ import org.firstinspires.ftc.vision.VisionPortal;
 @Autonomous
 public class Theia extends LinearOpMode {
 
-    public boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
+	public boolean RED = true, BACK = true; //RED is for red side or blue side, BACK is for front stage or backstage.
 
-    private CSVisionProcessor visionProcessor;
-    private VisionPortal visionPortal;
+	private CSVisionProcessor visionProcessor;
+	private VisionPortal visionPortal;
 
-    private DcMotor frm, flm, brm, blm, arm1, arm2;
-    private Servo rightclaw, leftclaw;
-    private double pwr = 0.6;
+	private DcMotor frm, flm, brm, blm, arm1, arm2;
+	private Servo rightclaw, leftclaw;
+	private double pwr = 0.6;
 
-    @Override
-    public void runOpMode() {
+	@Override
+	public void runOpMode() {
 
-        visionProcessor = new CSVisionProcessor(120, 5, 322, 260, 282, 500, 342);
-        visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "Webcam 1"), visionProcessor);
+		visionProcessor = new CSVisionProcessor(120, 5, 322, 260, 282, 500, 342);
+		visionPortal = VisionPortal.easyCreateWithDefaults(hardwareMap.get(WebcamName.class, "Webcam 1"), visionProcessor);
 		
-        frm = hardwareMap.get(DcMotor.class, "FLM");
-        flm = hardwareMap.get(DcMotor.class, "BLM");
-        brm = hardwareMap.get(DcMotor.class, "FRM");
-        blm = hardwareMap.get(DcMotor.class, "BRM");
-        arm1 = hardwareMap.get(DcMotor.class, "LM");
-        arm2 = hardwareMap.get(DcMotor.class, "RM");
-        rightclaw = hardwareMap.get(Servo.class, "FRS");
-        leftclaw = hardwareMap.get(Servo.class, "FLS");
+		frm = hardwareMap.get(DcMotor.class, "FLM");
+		flm = hardwareMap.get(DcMotor.class, "BLM");
+		brm = hardwareMap.get(DcMotor.class, "FRM");
+		blm = hardwareMap.get(DcMotor.class, "BRM");
+		arm1 = hardwareMap.get(DcMotor.class, "LM");
+		arm2 = hardwareMap.get(DcMotor.class, "RM");
+		rightclaw = hardwareMap.get(Servo.class, "FRS");
+		leftclaw = hardwareMap.get(Servo.class, "FLS");
 
-        CSVisionProcessor.StartingPosition startingPos = CSVisionProcessor.StartingPosition.NONE;
+		CSVisionProcessor.StartingPosition startingPos = CSVisionProcessor.StartingPosition.NONE;
 
 		//start by grabbing
 		rightclaw.setPosition(1.0);
@@ -48,45 +48,45 @@ public class Theia extends LinearOpMode {
 		//grabLeft();
 		//grabRight();
 		
-        //waitForStart();
+		//waitForStart();
 
 		boolean finishedSettingLocation = false;
-        while (!finishedSettingLocation) {
-            if (gamepad1.a) {
-                telemetry.addLine("confirmed starting location");
-                finishedSettingLocation = true;
-            } else if (gamepad1.dpad_down) {
-                telemetry.addLine("pos set to red back");
-                RED = true;
+		while (!finishedSettingLocation) {
+			if (gamepad1.a) {
+				telemetry.addLine("confirmed starting location");
+				finishedSettingLocation = true;
+			} else if (gamepad1.dpad_down) {
+				telemetry.addLine("pos set to red back");
+				RED = true;
 				BACK = false;
-            } else if (gamepad1.dpad_right) {
-                telemetry.addLine("pos set to red front");
-                RED = true;
+			} else if (gamepad1.dpad_right) {
+				telemetry.addLine("pos set to red front");
+				RED = true;
 				BACK = true;
-            } else if (gamepad1.dpad_up) {
-                telemetry.addLine("pos set to blue back");
-                RED = false;
+			} else if (gamepad1.dpad_up) {
+				telemetry.addLine("pos set to blue back");
+				RED = false;
 				BACK = false;
-            } else if (gamepad1.dpad_left) {
-                telemetry.addLine("pos set to blue front");
-                RED = false;
+			} else if (gamepad1.dpad_left) {
+				telemetry.addLine("pos set to blue front");
+				RED = false;
 				BACK = true;
-            }
-        }
+			}
+		}
 		
 		// find starting position of the prop/pixel [based on saturation]
-        while(!this.isStarted() && !this.isStopRequested()) {
-            startingPos = visionProcessor.getStartingPosition();
-            telemetry.addData("Identified", visionProcessor.getStartingPosition());
-            telemetry.update();
-        }
+		while(!this.isStarted() && !this.isStopRequested()) {
+			startingPos = visionProcessor.getStartingPosition();
+			telemetry.addData("Identified", visionProcessor.getStartingPosition());
+			telemetry.update();
+		}
 
-        visionPortal.stopStreaming();
+		visionPortal.stopStreaming();
 
-        // run all tasks as long as op mode is active
+		// run all tasks as long as op mode is active
 		
 		moveRight(50); //move up to the spike tape area
-        if(!opModeIsActive()) return;
+		if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
 		case LEFT:
@@ -119,7 +119,7 @@ public class Theia extends LinearOpMode {
 		default:
 			break;
 		}
-        if(!opModeIsActive()) return;
+		if(!opModeIsActive()) return;
 		
 		
 		if(!BACK) {
@@ -168,7 +168,7 @@ public class Theia extends LinearOpMode {
 		default:
 			break;
 		}
-        if(!opModeIsActive()) return;
+		if(!opModeIsActive()) return;
 		
 		moveUp(875); //move to the front stack of pixels
 		if(!opModeIsActive()) return;
@@ -191,7 +191,7 @@ public class Theia extends LinearOpMode {
 		moveUp(25); //already in parking but just like move off a bit yk
 		if(!opModeIsActive()) return;
 		
-    }
+	}
 
 
 	//these moves are based on the robot facing the front stage, ie [front] ._/-. [back] [robot with claw down facing front stage], the right and left are automatically swapped, so you pick the one
@@ -199,41 +199,41 @@ public class Theia extends LinearOpMode {
 	
 	public void moveRight(long time) {
 		move(RED?1:-1, 0, 0, time);
-        telemetry.update();
+		telemetry.update();
 	}
 
 	public void moveLeft(long time) {
 		move(RED?-1:1, 0, 0, time);
-        telemetry.update();
+		telemetry.update();
 	}
 
 	public void moveUp(long time) {
 		move(0, 1, 0, time);
-        telemetry.update();
+		telemetry.update();
 	}
 
 	public void moveDown(long time) {
 		move(0, -1, 0, time);
-        telemetry.update();
+		telemetry.update();
 	}
 
 	private void move(double dx, double dy, double da, long time) {
-        dx=dx;
-        dy=dy;
-        da=da;
-        frm.setPower((+dx-dy-da)*pwr);
-        flm.setPower((+dx+dy-da)*pwr);
-        brm.setPower((-dx-dy-da)*pwr);
-        blm.setPower((-dx+dy-da)*pwr);
+		dx=dx;
+		dy=dy;
+		da=da;
+		frm.setPower((+dx-dy-da)*pwr);
+		flm.setPower((+dx+dy-da)*pwr);
+		brm.setPower((-dx-dy-da)*pwr);
+		blm.setPower((-dx+dy-da)*pwr);
 		sleep(time);
 		halt();
-    }
+	}
 	
 	private void halt() {
-        frm.setPower(0);
-        flm.setPower(0);
-        brm.setPower(0);
-        blm.setPower(0);
+		frm.setPower(0);
+		flm.setPower(0);
+		brm.setPower(0);
+		blm.setPower(0);
 	}
 
 	public void grabBoth(long time) {
@@ -242,15 +242,31 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPosition(1.0);
-		leftclaw.setPosition(1.0);
+		rightclaw.setPosition(0.5);
+		leftclaw.setPosition(0.25);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.4);
 		arm2.setPower(-0.4);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-        telemetry.update();
+		telemetry.update();
+	}
+
+	public void grabRight(long time) {
+		arm1.setPower(-0.4);
+		arm2.setPower(0.4);
+		sleep((long)(time*0.375));
+		arm1.setPower(0);
+		arm2.setPower(0);
+		rightclaw.setPosition(0.5);
+		sleep((long)(time*0.25));
+		arm1.setPower(0.4);
+		arm2.setPower(-0.4);
+		sleep((long)(time*0.375));
+		arm1.setPower(0);
+		arm2.setPower(0);
+		telemetry.update();
 	}
 
 	public void grabLeft(long time) {
@@ -259,14 +275,14 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPosition(1.0);
+		leftclaw.setPosition(0.25);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.4);
 		arm2.setPower(-0.4);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-        telemetry.update();
+		telemetry.update();
 	}
 	
 	public void releaseBoth(long time) {
@@ -275,15 +291,15 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPosition(0.0);
-		leftclaw.setPosition(0.0);
+		rightclaw.setPosition(0.1);
+		leftclaw.setPosition(0.8);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.5);
 		arm2.setPower(-0.4);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-        telemetry.update();
+		telemetry.update();
 	}
 	
 	public void releaseRight(long time) {
@@ -292,14 +308,14 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		rightclaw.setPosition(0.0);
+		rightclaw.setPosition(0.1);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.4);
 		arm2.setPower(-0.4);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-        telemetry.update();
+		telemetry.update();
 	}
 	
 	public void releaseLeft(long time) {
@@ -308,15 +324,13 @@ public class Theia extends LinearOpMode {
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-		leftclaw.setPosition(0.0);
+		leftclaw.setPosition(0.8);
 		sleep((long)(time*0.25));
 		arm1.setPower(0.4);
 		arm2.setPower(-0.4);
 		sleep((long)(time*0.375));
 		arm1.setPower(0);
 		arm2.setPower(0);
-        telemetry.update();
+		telemetry.update();
 	}
-
-
 }
