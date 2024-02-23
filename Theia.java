@@ -93,7 +93,7 @@ public class Theia extends LinearOpMode {
 			moveUp(50); //move to left tape
 			if(!opModeIsActive()) return;
 			
-			releaseLeft(1000); //release purple pixel (left claw)
+			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
 			moveDown(50); //move back
@@ -102,7 +102,7 @@ public class Theia extends LinearOpMode {
 			moveDown(50); //move to right tape
 			if(!opModeIsActive()) return;
 			
-			releaseLeft(1000); //release purple pixel (left claw)
+			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
 			moveUp(50); //move back
@@ -111,7 +111,7 @@ public class Theia extends LinearOpMode {
 			moveRight(50); //move to center tape
 			if(!opModeIsActive()) return;
 			
-			releaseLeft(1000); //release purple pixel (left claw)
+			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
 			moveLeft(50); //move back
@@ -142,7 +142,7 @@ public class Theia extends LinearOpMode {
 			moveLeft(12); //move to left tape position
 			if(!opModeIsActive()) return;
 			
-			releaseRight(1000); //release yellow pixel (right claw)
+			releaseRight(250); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
 			moveRight(12); //move back
@@ -151,7 +151,7 @@ public class Theia extends LinearOpMode {
 			moveRight(87); //move to right tape position
 			if(!opModeIsActive()) return;
 			
-			releaseRight(1000); //release yellow pixel (right claw)
+			releaseRight(250); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
 			moveLeft(87); //move back
@@ -160,7 +160,7 @@ public class Theia extends LinearOpMode {
 			moveRight(37); //move to center tape position
 			if(!opModeIsActive()) return;
 			
-			releaseRight(1000); //release yellow pixel (right claw)
+			releaseRight(250); //release yellow pixel (right claw)
 			if(!opModeIsActive()) return;
 			
 			moveLeft(37); //move back
@@ -176,7 +176,13 @@ public class Theia extends LinearOpMode {
 		moveRight(12); //align
 		if(!opModeIsActive()) return;
 		
-		grabBoth(1000); //grab as much of stack as possible
+		releaseBoth(250); //open
+		if(!opModeIsActive()) return;
+		moveUp(10); //eat up
+		if(!opModeIsActive()) return;
+		grabBoth(250); //grab
+		if(!opModeIsActive()) return;
+		moveDown(10); //reset position
 		if(!opModeIsActive()) return;
 		
 		moveLeft(12); //align
@@ -185,7 +191,7 @@ public class Theia extends LinearOpMode {
 		moveDown(875); //move to the backthingy
 		if(!opModeIsActive()) return;
 		
-		releaseBoth(1000); //release as much of stack as possible
+		useArm(1000); //release as much of stack as possible
 		if(!opModeIsActive()) return;
 		
 		moveUp(25); //already in parking but just like move off a bit yk
@@ -236,101 +242,53 @@ public class Theia extends LinearOpMode {
 		blm.setPower(0);
 	}
 
-	public void grabBoth(long time) {
+	public void useArm(long time) {
 		arm1.setPower(-0.4);
 		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
-		rightclaw.setPosition(0.5);
-		leftclaw.setPosition(0.25);
-		sleep((long)(time*0.25));
+		sleep((long)(time*0.5));
 		arm1.setPower(0.4);
 		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
+		sleep((long)(time*0.5));
 		arm1.setPower(0);
 		arm2.setPower(0);
+		telemetry.update();
+	}
+
+	public void grabBoth(long time) {
+		rightclaw.setPosition(0.5);
+		leftclaw.setPosition(0.25);
+		sleep(time);
 		telemetry.update();
 	}
 
 	public void grabRight(long time) {
-		arm1.setPower(-0.4);
-		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
 		rightclaw.setPosition(0.5);
-		sleep((long)(time*0.25));
-		arm1.setPower(0.4);
-		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
+		sleep(time);
 		telemetry.update();
 	}
 
 	public void grabLeft(long time) {
-		arm1.setPower(-0.4);
-		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
 		leftclaw.setPosition(0.25);
-		sleep((long)(time*0.25));
-		arm1.setPower(0.4);
-		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
+		sleep(time);
 		telemetry.update();
 	}
 	
 	public void releaseBoth(long time) {
-		arm1.setPower(-0.4);
-		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
 		rightclaw.setPosition(0.1);
 		leftclaw.setPosition(0.8);
-		sleep((long)(time*0.25));
-		arm1.setPower(0.5);
-		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
+		sleep(time);
 		telemetry.update();
 	}
 	
 	public void releaseRight(long time) {
-		arm1.setPower(-0.4);
-		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
 		rightclaw.setPosition(0.1);
-		sleep((long)(time*0.25));
-		arm1.setPower(0.4);
-		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
+		sleep(time);
 		telemetry.update();
 	}
 	
 	public void releaseLeft(long time) {
-		arm1.setPower(-0.4);
-		arm2.setPower(0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
 		leftclaw.setPosition(0.8);
-		sleep((long)(time*0.25));
-		arm1.setPower(0.4);
-		arm2.setPower(-0.4);
-		sleep((long)(time*0.375));
-		arm1.setPower(0);
-		arm2.setPower(0);
+		sleep(time);
 		telemetry.update();
 	}
 }
