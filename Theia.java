@@ -43,8 +43,8 @@ public class Theia extends LinearOpMode {
 		CSVisionProcessor.StartingPosition startingPos = CSVisionProcessor.StartingPosition.NONE;
 
 		//start by grabbing
-		rightclaw.setPosition(1.0);
-		leftclaw.setPosition(1.0);
+		rightclaw.setPosition(0.5);
+		leftclaw.setPosition(0.25);
 		//grabLeft();
 		//grabRight();
 		
