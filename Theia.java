@@ -143,7 +143,7 @@ public class Theia extends LinearOpMode {
 		if(!BACK) {
 			//move???(???); // possible adjustment location
 			if(!opModeIsActive()) return;
-			moveUp(3000); //move to other set of tapes to be consistent
+			moveDown(3000); //move to other set of tapes to be consistent
 			if(!opModeIsActive()) return;
 			//move???(???); // possible adjustment location
 			if(!opModeIsActive()) return;
@@ -152,7 +152,7 @@ public class Theia extends LinearOpMode {
 			if(!opModeIsActive()) return;
 		}
 		
-		moveUp(7500); //move to the backthing
+		moveDown(7500); //move to the backthing
 		if(!opModeIsActive()) return;
 		
 		switch(startingPos) {
@@ -212,7 +212,7 @@ public class Theia extends LinearOpMode {
 		useArm(1000); //release as much of stack as possible
 		if(!opModeIsActive()) return;
 		
-		moveUp(500); //already in parking but just like move off a bit yk
+		moveLeft(500); //already in parking but just like move off a bit yk
 		if(!opModeIsActive()) return;
 	}
 
