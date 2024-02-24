@@ -91,7 +91,6 @@ public class Theia extends LinearOpMode {
 		if(!RED) {
 			moveRight(1250); //move up to the spike tape area
 			if(!opModeIsActive()) return;
-			return;
 			switch(startingPos) {
 			case LEFT:
 				moveUp(1500); //move to left tape
