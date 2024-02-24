@@ -92,31 +92,31 @@ public class Theia extends LinearOpMode {
 		
 		switch(startingPos) {
 		case LEFT:
-			moveUp(100); //move to left tape
+			moveUp(75); //move to left tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveDown(100); //move back
+			moveDown(75); //move back
 			break;
 		case RIGHT:
-			moveDown(100); //move to right tape
+			moveDown(75); //move to right tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveUp(100); //move back
+			moveUp(75); //move back
 			break;
 		case CENTER:
-			moveRight(100); //move to center tape
+			moveRight(75); //move to center tape
 			if(!opModeIsActive()) return;
 			
 			releaseLeft(250); //release purple pixel (left claw)
 			if(!opModeIsActive()) return;
 			
-			moveLeft(100); //move back
+			moveLeft(75); //move back
 			break;
 		default:
 			break;
