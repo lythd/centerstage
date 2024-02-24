@@ -86,7 +86,86 @@ public class Theia extends LinearOpMode {
 		visionPortal.stopStreaming();
 
 		// run all tasks as long as op mode is active
+
+		// BLUE PROCEDURE
+		if(!RED) {
+			moveRight(1250); //move up to the spike tape area
+			if(!opModeIsActive()) return;
+			return;
+			switch(startingPos) {
+			case LEFT:
+				moveUp(1500); //move to left tape
+				if(!opModeIsActive()) return;
+				
+				releaseLeft(250); //release purple pixel (left claw)
+				if(!opModeIsActive()) return;
+				moveUp(100); //jiggle
+				if(!opModeIsActive()) return;
+				moveDown(100); //unjiggle
+				if(!opModeIsActive()) return;
+				
+				moveDown(1500); //move back
+				break;
+			case RIGHT:
+				moveDown(500); //move to right tape
+				if(!opModeIsActive()) return;
+				
+				releaseLeft(250); //release purple pixel (left claw)
+				if(!opModeIsActive()) return;
+				moveUp(100); //jiggle
+				if(!opModeIsActive()) return;
+				moveDown(100); //unjiggle
+				if(!opModeIsActive()) return;
+				
+				moveUp(500); //move back
+				break;
+			case CENTER:
+				moveRight(500); //move to center tape
+				if(!opModeIsActive()) return;
+				moveUp(1000); //to drop on the center
+				if(!opModeIsActive()) return;
+				
+				releaseLeft(250); //release purple pixel (left claw)
+				if(!opModeIsActive()) return;
+				moveUp(100); //jiggle
+				if(!opModeIsActive()) return;
+				moveDown(100); //unjiggle
+				if(!opModeIsActive()) return;
+				
+				moveDown(1000); //move back
+				if(!opModeIsActive()) return;
+				moveLeft(500); //move back
+				break;
+			default:
+				break;
+			}
+			if(!opModeIsActive()) return;
+
+			if(!BACK) {
+				//move???(???); // possible adjustment location
+				if(!opModeIsActive()) return;
+				moveDown(3000); //move to other set of tapes to be consistent
+				if(!opModeIsActive()) return;
+				//move???(???); // possible adjustment location
+				if(!opModeIsActive()) return;
+			} else {
+				//move???(???); // possible adjustment location
+				if(!opModeIsActive()) return;
+			}
+			
+			moveDown(7500); //move to the backthing
+			if(!opModeIsActive()) return;
 		
+			moveDown(7500); //move to the backthingy
+			if(!opModeIsActive()) return;
+			
+			moveLeft(500); //already in parking but just like move off a bit yk
+			if(!opModeIsActive()) return;
+
+			return; //dont run red procedure obv
+		}
+
+		// RED PROCEDURE
 		moveRight(1250); //move up to the spike tape area
 		if(!opModeIsActive()) return;
 		
@@ -130,9 +209,9 @@ public class Theia extends LinearOpMode {
 			moveUp(100); //unjiggle
 			if(!opModeIsActive()) return;
 			
-			moveUp(500); //move back
+			moveUp(1000); //move back
 			if(!opModeIsActive()) return;
-			moveLeft(1000); //move back
+			moveLeft(500); //move back
 			break;
 		default:
 			break;
